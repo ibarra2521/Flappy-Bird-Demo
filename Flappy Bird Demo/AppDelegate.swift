@@ -9,13 +9,18 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        // Initialise Chartboost
+        let kChartboostAppID = "56933380f789822510f33333"
+        let kChartboostAppSignature = "d9db8d8b9026482b07c21dc4572c756278d381e5"
+        Chartboost.startWithAppId(kChartboostAppID, appSignature: kChartboostAppSignature, delegate: self)
+        Chartboost.setShouldRequestInterstitialsInFirstSession(false)
         return true
     }
 
